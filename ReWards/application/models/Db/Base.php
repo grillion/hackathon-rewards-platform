@@ -3,15 +3,11 @@
     class Application_Model_Db_Base extends Zend_Db_Table_Abstract {
 
         public function __construct($options = array()){
-
             parent::__construct(Zend_Registry::get('mysql_master'));
-
         }
 
         public function getDbDate($timestamp = null){
-
             return new Zend_Db_Expr('NOW()');
-
         }
         
         public function update(array $data, $where){

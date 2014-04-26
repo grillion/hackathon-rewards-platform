@@ -14,5 +14,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Registry::set('mysql_master', $resource->getDb('mysql_master'));
 	}
 
+	public function _initLog(){
+		$writer = new Zend_Log_Writer_Stream( Zend_Registry::get('config')->logging->debugLogPath );
+		$log = new Zend_Log( $writer );
+		Zend_Registry::set('log', $log );
+	}
+	
 }
 
