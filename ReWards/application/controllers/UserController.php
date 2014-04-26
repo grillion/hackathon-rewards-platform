@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Zend_Rest_Controller
+class UserController extends Application_Model_RestController
 {
 
     public function init()
@@ -11,10 +11,16 @@ class UserController extends Zend_Rest_Controller
     public function indexAction()
     {
 		$this->_helper->viewRenderer->setNoRender(true);
-		$this->postAction();
+		echo "Index Action";
     }
 
     public function getAction(){
+    	
+    	$id = $this->_getParam("id");
+    	
+    	return $this->getResponse()->setHeader('Content-type', 'application/json')
+    	->setHttpResponseCode(200)
+    	->appendBody( Zend_Json_Encoder::encode( $id ) );
     	
     }
     
